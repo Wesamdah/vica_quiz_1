@@ -71,12 +71,18 @@ export default function Navbar({ user, mode, setMode }: Props) {
               </NavLink>
             </li>
           ))}
-          <button
-            onClick={handleLogout}
-            className="blovk mt-10 cursor-pointer rounded-xl bg-[#B87E8E] px-4 py-2 text-white hover:opacity-80 lg:hidden"
-          >
-            Logout
-          </button>
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="mt-10 block cursor-pointer rounded-xl bg-[#B87E8E] px-4 py-2 text-white hover:opacity-80 lg:hidden"
+            >
+              Logout
+            </button>
+          ) : (
+            <button className="mt-10 block cursor-pointer rounded-xl bg-[#B87E8E] px-4 py-2 text-white hover:opacity-80 lg:hidden">
+              <Link to={"/auth/login"}>Login</Link>
+            </button>
+          )}
           <Icon
             key={mode === true ? "moon" : "light"}
             icon={mode === true ? "material-symbols:moon-stars" : "twemoji:sun"}
@@ -107,11 +113,6 @@ export default function Navbar({ user, mode, setMode }: Props) {
           >
             Logout
           </button>
-          <Icon
-            icon={"line-md:close-to-menu-alt-transition"}
-            onClick={() => setIsMenuActive(true)}
-            className="block cursor-pointer text-3xl lg:hidden"
-          />
         </div>
       ) : (
         <button className="hidden cursor-pointer rounded-xl bg-[#B87E8E] px-4 py-2 text-white hover:opacity-80 lg:block">
@@ -120,6 +121,11 @@ export default function Navbar({ user, mode, setMode }: Props) {
           </Link>
         </button>
       )}
+      <Icon
+        icon={"line-md:close-to-menu-alt-transition"}
+        onClick={() => setIsMenuActive(true)}
+        className="block cursor-pointer text-3xl lg:hidden"
+      />
       <Icon
         key={mode === true ? "moon" : "light"}
         icon={mode === true ? "material-symbols:moon-stars" : "twemoji:sun"}

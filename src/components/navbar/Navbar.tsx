@@ -30,7 +30,7 @@ export default function Navbar({ user, mode, setMode }: Props) {
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
   const handleLogout = async () => {
     try {
-      const response = await instance.post("logout");
+      await instance.post("logout");
       localStorage.removeItem("token");
       localStorage.removeItem("user_info");
       navigate("/auth/login");

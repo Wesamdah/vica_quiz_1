@@ -1,9 +1,19 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ItemsContext } from "../mainLayout/Root";
 
 export default function Home() {
   const { items } = useContext(ItemsContext);
+  const [showSpinner, setShowSpinner] = useState(true);
   const featuredGears = items.slice(0, 4);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSpinner(false);
+    }, 3000); // 3 ثواني
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <div className="flex w-full flex-col bg-[#ffcad4] p-4 lg:h-120 lg:flex-row dark:bg-[#1E1E1E]">
@@ -32,7 +42,11 @@ export default function Home() {
         </h2>
         <div className="my-5 grid h-fit grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {items[0].id === 0
-            ? null
+            ? showSpinner && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
+                  <div className="h-20 w-20 animate-spin rounded-full border-8 border-gray-300 border-t-pink-300"></div>
+                </div>
+              )
             : featuredGears.map((item) => (
                 <div
                   key={item.id}

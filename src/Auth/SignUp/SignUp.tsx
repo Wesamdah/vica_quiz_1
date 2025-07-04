@@ -60,7 +60,7 @@ export default function Login() {
       <div
         className={`animate-swipe-up h-screen w-full lg:w-[40%] ${
           count !== 2 && "flex flex-col items-center gap-8 p-8"
-        } no-scrollbar overflow-y-scroll`}
+        } overflow-y-scroll`}
         key={count}
       >
         {count === 0 ? (

@@ -74,7 +74,7 @@ export default function JoinForm({ data, setCount }: Props) {
           counter={2}
         />
 
-        <p className="text-sm text-[#5C5C5C] select-none text-[18px]">
+        <p className="text-sm text-[18px] text-[#5C5C5C] select-none">
           Joined Already?
           <span className="cursor-pointer text-[#B87E8E] underline">
             <Link to={"/auth/login"}> Sign in</Link>

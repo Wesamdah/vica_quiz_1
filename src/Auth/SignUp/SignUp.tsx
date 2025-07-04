@@ -58,9 +58,7 @@ export default function Login() {
   return (
     <div className="flex h-screen w-screen overflow-hidden">
       <div
-        className={`animate-swipe-up h-screen w-full lg:w-[40%] ${
-          count !== 2 && "flex flex-col items-center gap-8 p-8"
-        } overflow-y-scroll`}
+        className="animate-swipe-up custom-scroll flex h-screen w-full flex-col items-center gap-8 overflow-y-scroll p-8 lg:w-[40%]"
         key={count}
       >
         {count === 0 ? (

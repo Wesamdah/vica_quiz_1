@@ -31,33 +31,35 @@ export default function Home() {
           Featured Gears
         </h2>
         <div className="my-5 grid h-fit grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {featuredGears.map((item) => (
-            <div
-              key={item.id}
-              className="flex flex-col items-start rounded-2xl border border-[#eee] bg-[#FBFBFB] p-4 dark:bg-[#222222]"
-            >
-              {" "}
-              <h2 className="text-lg text-[#B87E8E] md:text-2xl lg:text-3xl dark:text-[#E4E4E4]">
-                {item.name}
-              </h2>
-              <p className="text_para">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Inventore at iure hic eveniet accusamus dolore, recusandae
-                assumenda quae cum, eaque cupiditate ipsa a nesciunt. Optio est
-                et libero aspernatur culpa.
-              </p>
-              <p className="mt-2 text-2xl font-bold text-[#B87E8E] dark:text-white">
-                {item.price}$
-              </p>
-              <div className="flex h-40 w-full justify-end">
-                <img
-                  src={item.image_url}
-                  alt=""
-                  className="h-full max-w-full"
-                />
-              </div>
-            </div>
-          ))}
+          {items[0].id === 0
+            ? null
+            : featuredGears.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex flex-col items-start rounded-2xl border border-[#eee] bg-[#FBFBFB] p-4 dark:bg-[#222222]"
+                >
+                  {" "}
+                  <h2 className="text-lg text-[#B87E8E] md:text-2xl lg:text-3xl dark:text-[#E4E4E4]">
+                    {item.name}
+                  </h2>
+                  <p className="text_para">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Inventore at iure hic eveniet accusamus dolore, recusandae
+                    assumenda quae cum, eaque cupiditate ipsa a nesciunt. Optio
+                    est et libero aspernatur culpa.
+                  </p>
+                  <p className="mt-2 text-2xl font-bold text-[#B87E8E] dark:text-white">
+                    {item.price}$
+                  </p>
+                  <div className="flex h-40 w-full justify-end">
+                    <img
+                      src={item.image_url}
+                      alt=""
+                      className="h-full max-w-full"
+                    />
+                  </div>
+                </div>
+              ))}
         </div>
       </div>
 

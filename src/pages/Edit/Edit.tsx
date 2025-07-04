@@ -29,7 +29,7 @@ export default function Edit() {
       }
       formData.append("_method", "PUT");
 
-      const response = await instance.post("/items/" + id, formData, {});
+      await instance.post("/items/" + id, formData, {});
       toast.success("Item has been Updated");
       setLoading(false);
       setTimeout(() => {

@@ -20,7 +20,7 @@ export default function Add() {
         formData.append("image", data.image);
       }
 
-      const response = await instance.post("/items", formData);
+      await instance.post("/items", formData);
       toast.success("Item has been created");
       setLoading(false);
       setTimeout(() => {

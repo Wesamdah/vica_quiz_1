@@ -9,7 +9,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSpinner(false);
-    }, 3000); // 3 ثواني
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);

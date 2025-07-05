@@ -41,8 +41,11 @@ export default function SignIn() {
   };
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden">
-      <div className="relative hidden h-screen w-[60%] flex-col rounded-r-2xl bg-[#fff2f2] p-8 lg:flex">
+    <div className="flex w-screen overflow-hidden" style={{ height: "100dvh" }}>
+      <div
+        className="relative hidden w-[60%] flex-col rounded-r-2xl bg-[#fff2f2] p-8 lg:flex"
+        style={{ height: "100dvh" }}
+      >
         <h1 className="heading">
           Share <br /> valuable resources
         </h1>
@@ -58,7 +61,10 @@ export default function SignIn() {
         </div>
       </div>
 
-      <div className="animate-swipe-up flex h-screen w-full flex-col items-center gap-8 p-8 lg:w-[40%]">
+      <div
+        className="animate-swipe-up flex w-full flex-col items-center gap-8 p-8 lg:w-[40%]"
+        style={{ height: "100dvh" }}
+      >
         <h1 className="text-[#6F4D58]">DashDah.</h1>
         <div className="space-y-6 text-center">
           <h2 className="heading">Sign In</h2>

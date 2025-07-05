@@ -7,30 +7,37 @@ import Unauthorized from "../pages/Unauthorized/Unauthorized";
 import Products from "../pages/Products/Products";
 import Add from "../pages/Add/Add";
 import Edit from "../pages/Edit/Edit";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const routes = [
   {
-    path: "/",
-    element: <Root />,
+    element: <PrivateRoutes />,
     children: [
       {
-        path: "",
-        element: <Home />,
-      },
-      {
-        path: "products",
-        element: <Products />,
-      },
-      {
-        path: "products/create",
-        element: <Add />,
-      },
-      {
-        path: "products/:id",
-        element: <Edit />,
+        path: "/",
+        element: <Root />,
+        children: [
+          {
+            path: "",
+            element: <Home />,
+          },
+          {
+            path: "products",
+            element: <Products />,
+          },
+          {
+            path: "products/create",
+            element: <Add />,
+          },
+          {
+            path: "products/:id",
+            element: <Edit />,
+          },
+        ],
       },
     ],
   },
+
   {
     path: "/auth",
     element: <Auth />,

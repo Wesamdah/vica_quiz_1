@@ -12,7 +12,7 @@ export default function Edit() {
   const { setLoading } = useLoading();
   const navigate = useNavigate();
   const { id } = useParams();
-  const { items } = useContext(ItemsContext);
+  const { items, setItems } = useContext(ItemsContext);
   const [selectedItem, setSelectedItem] = useState<ItemsData>({} as ItemsData);
 
   const handleUpdate = async (data: ItemsDataToSend) => {
@@ -30,10 +30,12 @@ export default function Edit() {
       formData.append("_method", "PUT");
 
       await instance.post("/items/" + id, formData, {});
+      const newItems = await instance.get("/items");
+      setItems(newItems.data);
       toast.success("Item has been Updated");
       setLoading(false);
       setTimeout(() => {
-        navigate("/");
+        navigate("/products");
       }, 3100);
     } catch (error) {
       setLoading(false);

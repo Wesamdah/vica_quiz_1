@@ -44,7 +44,7 @@ export default function Products() {
       const newItems = await instance.get("/items");
       setItems(newItems.data);
       setTimeout(() => {
-        navigate("/");
+        setPageNumber(0);
       }, 3100);
     } catch (error) {
       console.log(error);
@@ -60,13 +60,13 @@ export default function Products() {
     );
   }, [search, items]);
 
-  useEffect(() => {
-    if (effectRan.current === false && items[0].id === 0) {
-      toast.warning("Kindly Login Before");
-      navigate("/");
-      effectRan.current = true;
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem("token")) {
+  //     toast.warning("Kindly Login Before");
+  //     navigate("/");
+  //     effectRan.current = true;
+  //   }
+  // }, []);
 
   return (
     <div className="h-fit w-full">

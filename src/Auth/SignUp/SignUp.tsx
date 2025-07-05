@@ -5,6 +5,7 @@ import ProfileSetupForm from "./ProfileSetupForm";
 import { instance } from "../../api/axiosinstance";
 import { useLoading } from "../../context/LoadingContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -24,6 +25,10 @@ export default function Login() {
   const { setLoading } = useLoading();
 
   const handleSignUp: () => void = async () => {
+    if (data.current.profile_image === null) {
+      console.log("hi");
+      return toast.warning("kindly enter an image");
+    }
     setLoading(true);
     try {
       const formData = new FormData();
@@ -56,9 +61,10 @@ export default function Login() {
   };
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden">
+    <div className="flex w-screen overflow-hidden" style={{ height: "100dvh" }}>
       <div
-        className="animate-swipe-up custom-scroll flex h-screen w-full flex-col items-center gap-8 overflow-y-scroll p-8 lg:w-[40%]"
+        className="animate-swipe-up custom-scroll flex w-full flex-col items-center gap-8 overflow-y-scroll p-8 lg:w-[40%]"
+        style={{ height: "100dvh" }}
         key={count}
       >
         {count === 0 ? (
@@ -72,7 +78,10 @@ export default function Login() {
         )}
       </div>
 
-      <div className="relative hidden h-screen w-[60%] flex-col rounded-l-2xl bg-[#fff2f2] p-8 lg:flex">
+      <div
+        className="relative hidden w-[60%] flex-col rounded-l-2xl bg-[#fff2f2] p-8 lg:flex"
+        style={{ height: "100dvh" }}
+      >
         <h1 className="heading">
           Share <br /> valuable resources
         </h1>

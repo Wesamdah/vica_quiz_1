@@ -4,10 +4,13 @@ import ItemForm from "../../components/ItemForm/ItemForm";
 import type { ItemsDataToSend } from "../../types/items";
 import { useNavigate } from "react-router-dom";
 import { useLoading } from "../../context/LoadingContext";
+import { useContext } from "react";
+import { ItemsContext } from "../mainLayout/Root";
 
 export default function Add() {
   const { setLoading } = useLoading();
   const navigate = useNavigate();
+  const { setItems } = useContext(ItemsContext);
   const handleCreate = async (data: ItemsDataToSend) => {
     setLoading(true);
     try {
@@ -21,10 +24,12 @@ export default function Add() {
       }
 
       await instance.post("/items", formData);
+      const newItems = await instance.get("/items");
+      setItems(newItems.data);
       toast.success("Item has been created");
       setLoading(false);
       setTimeout(() => {
-        navigate("/");
+        navigate("/products");
       }, 3100);
     } catch (error) {
       setLoading(false);

@@ -1,20 +1,12 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import {
-  useContext,
-  useEffect,
-  useState,
-  type ChangeEvent,
-  useRef,
-} from "react";
+import { useContext, useEffect, useState, type ChangeEvent } from "react";
 import { ItemsContext } from "../mainLayout/Root";
 import type { ItemsData } from "../../types/items";
 import { instance } from "../../api/axiosinstance";
 import { toast } from "react-toastify";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Products() {
-  const navigate = useNavigate();
-  const effectRan = useRef(false);
   const { items, setItems } = useContext(ItemsContext);
   const [pageNumber, setPageNumber] = useState<number>(0);
   const [search, setSearch] = useState<string>("");
@@ -59,14 +51,6 @@ export default function Products() {
       ),
     );
   }, [search, items]);
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     toast.warning("Kindly Login Before");
-  //     navigate("/");
-  //     effectRan.current = true;
-  //   }
-  // }, []);
 
   return (
     <div className="h-fit w-full">

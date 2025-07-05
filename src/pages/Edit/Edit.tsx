@@ -16,17 +16,19 @@ export default function Edit() {
   const [selectedItem, setSelectedItem] = useState<ItemsData>({} as ItemsData);
 
   const handleUpdate = async (data: ItemsDataToSend) => {
-    console.log(data);
+    console.log(selectedItem);
+    console.log(selectedItem.name);
     setLoading(true);
     try {
       const formData = new FormData();
 
-      formData.append("name", data.name);
-      formData.append("price", data.price);
+      formData.append("name", data.name ? data.name : selectedItem.name);
+      formData.append("price", data.price ? data.price : selectedItem.price);
 
       if (data.image) {
         formData.append("image", data.image);
       }
+
       formData.append("_method", "PUT");
 
       await instance.post("/items/" + id, formData, {});
